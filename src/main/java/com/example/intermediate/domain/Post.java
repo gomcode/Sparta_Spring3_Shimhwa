@@ -1,6 +1,8 @@
 package com.example.intermediate.domain;
 
 import com.example.intermediate.controller.request.PostRequestDto;
+
+import java.sql.Clob;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,7 +34,7 @@ public class Post extends Timestamped {
   private String title;
 
   @Column(nullable = false)
-  private String content;
+  private Clob content;
 
   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Comment> comments;

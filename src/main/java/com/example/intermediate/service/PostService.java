@@ -27,8 +27,11 @@ public class PostService {
 
   private final TokenProvider tokenProvider;
 
+
+  // 게시글 작성
   @Transactional
   public ResponseDto<?> createPost(PostRequestDto requestDto, HttpServletRequest request) {
+    //
     if (null == request.getHeader("Refresh-Token")) {
       return ResponseDto.fail("MEMBER_NOT_FOUND",
           "로그인이 필요합니다.");
@@ -45,8 +48,8 @@ public class PostService {
     }
 
     Post post = Post.builder()
-        .title(requestDto.getTitle())
-        .content(requestDto.getContent())
+        .title(requestDto.getTitle())  // 제목
+        .content(requestDto.getContent())  // 내용
         .member(member)
         .build();
     postRepository.save(post);

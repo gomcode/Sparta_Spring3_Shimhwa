@@ -1,23 +1,24 @@
 package com.example.intermediate.controller.request;
 
-import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
+import javax.validation.constraints.NotBlank;
+
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginRequestDto {
+public class SubcommentRequestDto {
+  @Id
+  private Long subcommentKey;
+
+  private Long postKey;
+  private Long userKey;
 
   @NotBlank
-  private String userName;
-
-  @NotBlank
-  private String userId;
-
-  @NotBlank
-  private String userPassword;
-
+  private String subcomment;
 }
